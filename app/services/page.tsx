@@ -114,7 +114,6 @@ export default function Services() {
         ctaText="Book Consultation"
         ctaLink="/contact"
         height="md"
-        overlay="green"
       />
 
       {/* Services Introduction */}

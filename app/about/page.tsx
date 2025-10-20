@@ -46,13 +46,12 @@ export default function About() {
     <>
       {/* Hero Section */}
       <Hero
-        backgroundImage="/assets/clinic-photo.jpg"
+        backgroundImage="/assets/image.png"
         title="Our Story"
         subtitle="Bringing Ancient Wisdom to Modern Scotland"
         description="At Leora, we believe that true wellness begins with balance – a harmony between your unique constitution and your daily life."
         showCta={false}
         height="md"
-        overlay="green"
       />
 
       {/* Mission Statement */}
