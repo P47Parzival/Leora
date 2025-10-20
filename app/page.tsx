@@ -1,103 +1,229 @@
-import Image from "next/image";
+'use client';
+
+import React from 'react';
+import { motion } from 'framer-motion';
+import Hero from '@/components/Hero';
+import ServiceCard from '@/components/ServiceCard';
+import Button from '@/components/Button';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const philosophyPoints = [
+    {
+      icon: '🌱',
+      title: 'Prakriti & Vikriti',
+      description: 'Understanding your unique constitution (Prakriti) and current imbalances (Vikriti) to create personalized healing pathways.'
+    },
+    {
+      icon: '⚖️',
+      title: 'Health as Harmony',
+      description: 'We believe true health is the harmony between mind, body, and spirit, achieved through balanced living and natural healing.'
+    },
+    {
+      icon: '🌿',
+      title: 'Nature Heals',
+      description: 'Harnessing the power of authentic Ayurvedic herbs, lifestyle practices, and time-tested wisdom for sustainable wellness.'
+    }
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const quickServices = [
+    {
+      title: 'Ayurvedic Consultation',
+      description: 'Comprehensive pulse and tongue assessment to understand your unique constitution and current health needs.',
+      imageSrc: '/assets/consultation.jpg',
+      imageAlt: 'Ayurvedic consultation session',
+      link: '/services'
+    },
+    {
+      title: 'Detox & Rejuvenation',
+      description: 'Gentle cleansing programs and Rasayana therapies to restore vitality and balance naturally.',
+      imageSrc: '/assets/detox-week.jpg',
+      imageAlt: 'Detox and rejuvenation therapy',
+      link: '/services'
+    },
+    {
+      title: 'Women\'s Health',
+      description: 'Specialized care for menstrual health, PCOS, menopause, and hormonal balance using natural approaches.',
+      imageSrc: '/assets/womens-health.jpg',
+      imageAlt: 'Women\'s health consultation',
+      link: '/services'
+    },
+    {
+      title: 'Mind-Body Wellness',
+      description: 'Holistic support for anxiety, sleep disorders, and stress through herbs, meditation, and lifestyle guidance.',
+      imageSrc: '/assets/mind-body.jpg',
+      imageAlt: 'Mind-body wellness session',
+      link: '/services'
+    }
+  ];
+
+  return (
+    <>
+      {/* Hero Section */}
+      <Hero
+        backgroundImage="/assets/hero-bg.jpg"
+        title="Illuminate with Ayurveda"
+        subtitle="Ancient Wisdom • Modern Life"
+        description="Discover your healthiest self – gently, naturally, and sustainably through authentic Ayurvedic healing in Aberdeen, Scotland."
+        ctaText="Book Consultation"
+        ctaLink="/contact"
+        height="full"
+        overlay="dark"
+      />
+
+      {/* Core Philosophy Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-neutral-800 mb-6">
+              Our Philosophy
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed">
+              At Leora, we honor the ancient science of Ayurveda while making it accessible for modern life. 
+              Every individual is unique, and so is their path to wellness.
+            </p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+            {philosophyPoints.map((point, index) => (
+              <motion.div
+                key={point.title}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
+                viewport={{ once: true }}
+                className="text-center group"
+              >
+                <div className="w-20 h-20 mx-auto mb-6 bg-leora-green-100 rounded-full flex items-center justify-center text-3xl group-hover:bg-leora-green-200 transition-colors duration-300">
+                  {point.icon}
+                </div>
+                <h3 className="text-2xl font-serif font-semibold mb-4 text-neutral-800">
+                  {point.title}
+                </h3>
+                <p className="text-neutral-600 leading-relaxed">
+                  {point.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </section>
+
+      {/* Quick Services Preview */}
+      <section className="py-20 bg-neutral-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-neutral-800 mb-6">
+              Holistic Care Tailored to You
+            </h2>
+            <p className="text-xl text-neutral-600 max-w-3xl mx-auto leading-relaxed mb-8">
+              From comprehensive consultations to specialized programs, discover how Ayurvedic wisdom 
+              can transform your health and wellbeing.
+            </p>
+            <Button href="/services" variant="outline" size="lg">
+              View All Services
+            </Button>
+          </motion.div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {quickServices.map((service, index) => (
+              <ServiceCard
+                key={service.title}
+                title={service.title}
+                description={service.description}
+                imageSrc={service.imageSrc}
+                imageAlt={service.imageAlt}
+                link={service.link}
+                delay={index * 0.1}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Call to Action Section */}
+      <section className="py-20 bg-leora-green-500">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-4xl sm:text-5xl font-serif font-bold text-white mb-6">
+              Ready to Begin Your Healing Journey?
+            </h2>
+            <p className="text-xl text-leora-green-100 mb-8 leading-relaxed">
+              Take the first step towards balanced health with a personalized Ayurvedic consultation. 
+              Available both online and in-person in Aberdeen, Scotland.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button 
+                href="/contact" 
+                variant="secondary" 
+                size="lg"
+                className="shadow-lg hover:shadow-xl"
+              >
+                Book Consultation
+              </Button>
+              <Button 
+                href="/about" 
+                variant="outline" 
+                size="lg"
+                className="border-white text-white hover:bg-white hover:text-leora-green-500"
+              >
+                Learn About Us
+              </Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Trust Indicators */}
+      <section className="py-16 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+          >
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-leora-gold-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">🎓</span>
+              </div>
+              <h3 className="font-serif font-semibold text-lg mb-2">BAMS Qualified</h3>
+              <p className="text-neutral-600 text-sm">Authentic Ayurvedic doctor with traditional training from India</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-leora-gold-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">🌱</span>
+              </div>
+              <h3 className="font-serif font-semibold text-lg mb-2">Natural Healing</h3>
+              <p className="text-neutral-600 text-sm">UK-registered herbs and time-tested natural therapies</p>
+            </div>
+            <div className="flex flex-col items-center">
+              <div className="w-16 h-16 bg-leora-gold-100 rounded-full flex items-center justify-center mb-4">
+                <span className="text-2xl">💚</span>
+              </div>
+              <h3 className="font-serif font-semibold text-lg mb-2">Personalized Care</h3>
+              <p className="text-neutral-600 text-sm">Tailored treatments based on your unique constitution</p>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
   );
 }

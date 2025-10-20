@@ -1,26 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Open+Sans:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Leora Wellness Color Palette */
+  --primary-green: #4A7C59;
+  --light-green: #A8CABA;
+  --warm-neutral: #F5F5F5;
+  --gold-accent: #D4A574;
+  --text-dark: #2C2C2C;
+  --text-light: #6B7280;
+  --white: #FFFFFF;
+  --background: var(--warm-neutral);
+  --foreground: var(--text-dark);
 }
 
 @theme inline {
+  --color-primary: var(--primary-green);
+  --color-primary-light: var(--light-green);
+  --color-accent: var(--gold-accent);
+  --color-neutral: var(--warm-neutral);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-text-dark: var(--text-dark);
+  --color-text-light: var(--text-light);
+  --color-white: var(--white);
+  
+  /* Typography */
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Open Sans', sans-serif;
+  
+  /* Custom color palette */
+  --color-leora-green-50: #f0f9f4;
+  --color-leora-green-100: #dcf0e4;
+  --color-leora-green-200: #A8CABA;
+  --color-leora-green-500: #4A7C59;
+  --color-leora-green-600: #3d6349;
+  --color-leora-green-700: #2f4a37;
+  
+  --color-leora-gold-50: #fdf6f0;
+  --color-leora-gold-100: #f9e7d4;
+  --color-leora-gold-200: #D4A574;
+  --color-leora-gold-500: #b8925f;
+  --color-leora-gold-600: #9c7a4f;
+  
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #F5F5F5;
+  --color-neutral-200: #e5e5e5;
+  --color-neutral-800: #2C2C2C;
+  --color-neutral-600: #6B7280;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--text-dark);
+}
+
+/* Utility classes for animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+.slide-up {
+  transform: translateY(30px);
+  opacity: 0;
+  animation: slideUp 0.8s ease-out forwards;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Focus styles for accessibility */
+.focus-visible {
+  outline: 2px solid var(--primary-green);
+  outline-offset: 2px;
 }
