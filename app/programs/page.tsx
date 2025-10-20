@@ -60,7 +60,7 @@ export default function Programs() {
       title: 'Ayurveda for Women\'s Balance',
       description: 'A comprehensive program addressing hormonal harmony and emotional wellbeing through food as medicine, targeted herbs, and lifestyle practices specifically designed for women\'s unique health needs.',
       duration: '8 Weeks',
-      imageSrc: '/assets/womens-balance.jpg',
+      imageSrc: '/assets/womens-health.jpg',
       imageAlt: 'Women\'s hormonal balance program using Ayurvedic principles',
       highlights: [
         'Hormonal balance restoration',
@@ -83,7 +83,7 @@ export default function Programs() {
       title: 'Mindful Living Coaching',
       description: 'Learn to seamlessly integrate Ayurvedic principles into your daily UK lifestyle. This program combines ancient wisdom with modern practicality for sustainable wellness and mindful living.',
       duration: '12 Weeks',
-      imageSrc: '/assets/mindful-living.jpg',
+      imageSrc: '/assets/image.png',
       imageAlt: 'Mindful living coaching program integrating Ayurveda into modern life',
       highlights: [
         'Daily routine optimization',

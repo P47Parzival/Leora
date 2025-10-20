@@ -67,7 +67,6 @@ export default function Home() {
         ctaText="Book Consultation"
         ctaLink="/contact"
         height="full"
-        overlay="dark"
       />
 
       {/* Core Philosophy Section */}
